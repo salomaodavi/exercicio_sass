@@ -1,0 +1,108 @@
+// styles.scss
+
+@import 'variables'; // Importando as variáveis que você definiu
+
+* {
+    margin: 0; // Remove margem de todos os elementos
+    padding: 0; // Remove padding de todos os elementos
+    box-sizing: border-box; // Inclui padding e bordas nas dimensões dos elementos
+    font-family: $font-stack; // Define a fonte padrão usando a variável
+}
+
+body {
+    background-color: $background-color; // Define a cor de fundo usando a variável
+}
+
+li {
+    list-style: none; // Remove os marcadores das listas
+}
+
+.container {
+    max-width: $max-width; // Define a largura máxima do container
+    width: 100%; // Faz o container ocupar 100% da largura disponível
+    margin: 0 auto; // Centraliza o container
+}
+
+header {
+    background-color: $header-background; // Cor de fundo do cabeçalho
+    position: sticky; // Mantém o cabeçalho fixo no topo ao rolar
+    top: 0; // Posição do cabeçalho
+    left: 0; // Alinhamento à esquerda
+
+    .container {
+        display: flex; // Usa flexbox para layout
+        justify-content: space-between; // Espaça os elementos
+        align-items: center; // Alinha os elementos no centro
+        padding: $container-padding; // Padding do cabeçalho
+    }
+
+    .menu {
+        display: flex; // Usa flexbox para a lista de menus
+
+        li {
+            font-weight: bold; // Deixa o texto em negrito
+            margin-left: 24px; // Espaço à esquerda dos itens do menu
+
+            a {
+                color: #fff; // Cor do texto dos links
+                text-decoration: none; // Remove o sublinhado dos links
+            }
+        }
+    }
+}
+
+section {
+    padding: 56px 0; // Padding na seção principal
+
+    .products {
+        margin-top: 40px; // Espaço acima da lista de produtos
+        display: grid; // Usa grid para layout dos produtos
+        grid-template-columns: repeat(3, 32.66%); // 3 colunas
+        column-gap: 1%; // Espaço entre as colunas
+        row-gap: 4%; // Espaço entre as linhas
+        width: 100%; // Largura total
+
+        .product-item {
+            img {
+                width: 100%; // A imagem ocupa toda a largura do item
+                border-radius: $product-border-radius; // Borda arredondada na imagem
+            }
+
+            .product-button {
+                display: block; // Faz o botão ocupar a largura total
+                background-color: $primary-color; // Cor de fundo do botão
+                color: #fff; // Cor do texto no botão
+                text-align: center; // Alinha o texto ao centro
+                padding: 8px 0; // Padding do botão
+                border-radius: $border-radius; // Borda arredondada do botão
+                margin-top: 8px; // Espaço acima do botão
+                text-decoration: none; // Remove o sublinhado
+
+                &:hover {
+                    background-color: $primary-hover; // Muda a cor ao passar o mouse
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        max-width: 80%; // Largura máxima reduzida em telas menores
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 48.5%); // 2 colunas em telas menores
+        column-gap: 3%; // Espaço entre colunas
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .products {
+        display: block; // Muda o layout para bloco em telas muito pequenas
+
+        .product-item {
+            margin-bottom: 32px; // Espaço abaixo de cada produto
+        }
+    }
+}
